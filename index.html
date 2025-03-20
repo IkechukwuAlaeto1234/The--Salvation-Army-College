@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Salvation Army College - Ibadan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #8D0D0D;
+            --accent: #E6B12E;
+            --light: #F8F9FA;
+            --dark: #212529;
+            --light-gray: #E9ECEF;
+            --medium-gray: #CED4DA;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #FFFFFF;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-top {
+            background-color: var(--primary);
+            padding: 8px 0;
+        }
+        
+        .header-top .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-info a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: var(--accent);
+        }
+        
+        .header-main {
+            padding: 15px 0;
+        }
+        
+        .header-main .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 15px;
+        }
+        
+        .logo-text h1 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .logo-text p {
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .main-nav li {
+            position: relative;
+        }
+        
+        .main-nav a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .main-nav a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Beautiful navigation animation */
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .main-nav a:hover::after {
+            width: 70%;
+        }
+        
+        /* Active class for navigation */
+        .main-nav a.active {
+            color: var(--secondary);
+        }
+        
+        .main-nav a.active::after {
+            width: 70%;
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding-top: 135px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1920/1080') no-repeat center center;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary);
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #750b0b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Announcements */
+        .announcements {
+            background-color: var(--accent);
+            padding: 15px 0;
+        }
+        
+        .announcements-container {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .announcements-title {
+            flex-shrink: 0;
+            font-weight: 700;
+            margin-right: 20px;
+            color: var(--primary);
+        }
+        
+        .announcements-content {
+            white-space: nowrap;
+            animation: scroll 30s linear infinite;
+        }
+        
+        .announcements-content p {
+            display: inline-block;
+            margin-right: 50px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: #FFFFFF;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-heading h2 {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .section-heading p {
+            color: #6c757d;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* Features */
+        .features-section {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: #FFFFFF;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary);
+            color: #FFFFFF;
+            font-size: 36px;
+        }
+        
+        .feature-content {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .feature-content h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* News & Events */
+        .news-section {
+            padding: 80px 0;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .news-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 25px;
+            background-color: #FFFFFF;
+        }
+        
+        .news-date {
+            font-size: 14px;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .news-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .news-content p {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--primary);
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1920/600') center/cover;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+        
+        .btn-accent:hover {
+            background-color: #d9a629;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: #FFFFFF;
+            padding: 60px 0 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-col h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+        
+        .footer-contact li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #FFFFFF;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .features-grid,
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-top .container {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .main-nav {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background-color: #FFFFFF;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                padding: 80px 20px;
+                transition: right 0.3s;
+                z-index: 1001;
+            }
+            
+            .main-nav.active {
+                right: 0;
+            }
+            
+            .main-nav ul {
+                flex-direction: column;
+            }
+            
+            .main-nav li {
+                margin-bottom: 10px;
+            }
+            
+            .nav-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: var(--primary);
+            }
+            
+            .features-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 30px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .section-heading h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <a href="tel:+2348012345678"><i class="fas fa-phone"></i> +234 801 234 5678</a>
+                    <a href="mailto:info@salvationarmycollege.edu.ng"><i class="fas fa-envelope"></i> info@salvationarmycollege.edu.ng</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-main">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="data:image/png;base64,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" alt="The Salvation Army College Logo">
+                    <div class="logo-text">
+                        <h1>The Salvation Army College</h1>
+                        <p>Ibadan, Nigeria</p>
+                    </div>
+                </a>
+                
+                <button class="mobile-nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="main-nav">
+                    <button class="nav-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="campus-life.html">Campus Life</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Excellence in Education and Faith</h2>
+            <p>The Salvation Army College is dedicated to nurturing excellence through quality education founded on Christian principles and values.</p>
+            <a href="admissions.html" class="btn">Apply Now</a>
+        </div>
+    </section>
+    
+    <!-- Announcements -->
+    <div class="announcements">
+        <div class="container">
+            <div class="announcements-container">
+                <div class="announcements-title">ANNOUNCEMENTS:</div>
+                <div class="announcements-content">
+                    <p>Applications for the 2025/2026 academic session are now open</p>
+                    <p>Upcoming Parents-Teachers Meeting on April 15, 2025</p>
+                    <p>Inter-House Sports Competition scheduled for May 10, 2025</p>
+                    <p>New scholarship opportunities available for exceptional students</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Welcome to The Salvation Army College</h2>
+                <p>A center of academic excellence and spiritual growth</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src = "https://shorturl.at/HRHiE"alt="The Salvation Army College Campus">
+                </div>
+                <div class="about-text">
+                    <h3>Building Future Leaders</h3>
+                    <p>Founded on the principles of academic excellence and Christian values, The Salvation Army College, Ibadan has been a beacon of quality education since its establishment. We are committed to nurturing well-rounded individuals equipped with knowledge, character, and spiritual values.</p>
+                    <p>Our dedicated faculty and state-of-the-art facilities create an environment where students can thrive academically, socially, and spiritually. We believe in holistic education that prepares students not just for examinations, but for life.</p>
+                    <a href="about.html" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Why Choose Us</h2>
+                <p>Discover what makes The Salvation Army College the right choice for your child's educational journey</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Academic Excellence</h3>
+                        <p>Our curriculum is designed to challenge students and bring out their best. With consistently outstanding results in national examinations, we pride ourselves on our academic standards.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cross"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Christian Values</h3>
+                        <p>We instill strong moral and spiritual values in our students, preparing them to be ethical leaders and responsible citizens guided by Christian principles.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Qualified Faculty</h3>
+                        <p>Our teachers are not just educators but mentors who are committed to bringing out the best in every student through personalized attention and guidance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- News & Events -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-heading">
+                <h2>News & Events</h2>
+                <p>Stay updated with the latest happenings at The Salvation Army College</p>
+            </div>
+            
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://shorturl.at/Xphhn" alt="Science Competition">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">March 15, 2025</div>
+                        <h3>Students Win National Science Competition</h3>
+                        <p>Our senior students brought home the first place trophy at the National Science Competition held in Lagos last week.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://tinyurl.com/3vv5xpby" alt="Cultural Day">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">March 8, 2025</div>
+                        <h3>Annual Cultural Day Celebrations</h3>
+                        <p>The school came alive with colors, music, and traditional performances during our annual Cultural Day celebrations.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://tinyurl.com/25mnv5sk" alt="Library Opening">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">February 28, 2025</div>
+                        <h3>New Library Wing Inaugurated</h3>
+                        <p>The state-of-the-art library wing was inaugurated by the Commissioner of Education, expanding our resources.</p>
+                        <a href="blog-post.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Join Our Community?</h2>
+            <p>Take the first step towards giving your child a quality education grounded in values. Applications for the 2025/2026 academic year are now open.</p>
+            <a href="admissions.html" class="btn btn-accent">Apply Now</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>About Us</h3>
+                    <p>The Salvation Army College, Ibadan provides quality education rooted in Christian values. We nurture future leaders with knowledge, character, and faith.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="calendar.html">School Calendar</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Useful Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="student-portal.html">Student Portal</a></li>
+                        <li><a href="parent-portal.html">Parent Portal</a></li>
+                        <li><a href="careers.html">Career Opportunities</a></li>
+                        <li><a href="alumni.html">Alumni Network</a></li>
+                        <li><a href="downloads.html">Downloads</a></li>
+                        <li><a href="faqs.html">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <address>123 Salvation Army Road, Ibadan, Oyo State, Nigeria</address>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+2348078800552">+234 807 880 552</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:ikechukwualaeto@gmail.com">ikechukwualaeto@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Salvation Army College, Ibadan. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const nav = document.querySelector('.main-nav');
+        const navClose = document.querySelector('.nav-close');
+        
+        mobileNavToggle.addEventListener('click', () => {
+            nav.classList.add('active');
+        });
+        
+        navClose.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener
